@@ -223,13 +223,13 @@ public class ImageService {
                 } else {
                     // Normal generation, just emit one result
                     GenerateResponse response = generateWithGoogleGemini(request);
-                    emitter.send(SseEmitter.event().name("result").data(response));
+                    emitter.send(SseEmitter.event().name("result").data(java.util.Objects.requireNonNull(response)));
                     emitter.complete();
                 }
             } else {
                 // NovelAI doesn't support deep thinking stream yet, just return result
                 GenerateResponse response = generateImage(request);
-                emitter.send(SseEmitter.event().name("result").data(response));
+                emitter.send(SseEmitter.event().name("result").data(java.util.Objects.requireNonNull(response)));
                 emitter.complete();
             }
         } catch (Exception e) {
@@ -252,7 +252,7 @@ public class ImageService {
         Runnable sendLog = () -> {
             try {
                 String lastLog = thinkingLog.get(thinkingLog.size() - 1);
-                emitter.send(SseEmitter.event().name("log").data(lastLog));
+                emitter.send(SseEmitter.event().name("log").data(java.util.Objects.requireNonNull(lastLog)));
             } catch (Exception e) {
                 log.error("Failed to send log event", e);
             }
@@ -271,7 +271,7 @@ public class ImageService {
         sendLog.run();
 
         // Send sketch event
-        emitter.send(SseEmitter.event().name("sketch").data(sketchImage));
+        emitter.send(SseEmitter.event().name("sketch").data(java.util.Objects.requireNonNull(sketchImage)));
 
         // Step 2: Vision Analysis
         String step2 = "Phase 2: Analyzing visual structure and composition...";
@@ -343,7 +343,7 @@ public class ImageService {
 
             // Send final result
             log.info("Sending final result to client");
-            emitter.send(SseEmitter.event().name("result").data(finalResponse));
+            emitter.send(SseEmitter.event().name("result").data(java.util.Objects.requireNonNull(finalResponse)));
             emitter.complete();
             log.info("Deep Thinking stream completed successfully");
         } catch (Exception e) {

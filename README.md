@@ -12,8 +12,8 @@ Void Weaver is a powerful AI-driven image analysis and generation tool that deci
   - **Imperative Correction**: Issues specific "Fix Commands" to the final generation model.
   - **Style Injection**: Automatically applies professional art styles (matte, impasto, textured) while rejecting "plastic" CGI looks.
 - **🎨 Dual Engine Support**: Seamlessly switch between **NovelAI V3** (Anime/2D) and **Google Imagen** (Photorealistic/Creative).
-- **hidden Implicit Color Extraction**: Automatically extracts 5-7 dominant color palettes from source images as hidden tags, ensuring color consistency without cluttering the UI.
-- **🔍 Intelligent Octant Analysis**: Uses Google Gemini 2.0 Flash to deconstruct images into 8 key modules (Style, Subject, Pose, Costume, Background, Composition, Atmosphere, Extra).
+- **🎨 Hidden Palette Extraction**: Automatically extracts 5-7 dominant color palettes from source images as hidden tags, ensuring color consistency without cluttering the UI.
+- **🔍 Intelligent Octant Analysis**: Uses the newest Google Gemini Flash models to deconstruct images into 8 key modules (Style, Subject, Pose, Costume, Background, Composition, Atmosphere, Extra).
 - **⚖️ Precise Weight Control**: Fine-tune generation with adjustable tag weights (0.5 - 1.5).
 - **🔒 Module Locking**: Lock specific modules (e.g., keep the "Pose" but change the "Costume") for iterative refinement.
 - **💬 Natural Language Refinement**: Update your prompt using simple English instructions (e.g., "Make the hair pink", "Add cat ears").
@@ -23,7 +23,7 @@ Void Weaver is a powerful AI-driven image analysis and generation tool that deci
 
 ### Prerequisites
 
-- **Java 18+** (for Backend)
+- **Java 17+** (for Backend)
 - **Node.js 18+** (for Frontend)
 - **Maven 3.8+**
 - **Gemini API Key** (Required for analysis & critique)
@@ -102,9 +102,9 @@ Access UI at: `http://localhost:5173`
 ## 🛠️ Tech Stack
 
 ### Backend
-- **Java 18** / **Spring Boot 3.2.1**
-- **Google Vertex AI SDK**
-- **OkHttp** (NovelAI Integration)
+- **Java 17+** / **Spring Boot 3.2.1**
+- **Google Gemini/Vertex API** (REST Integration)
+- **OkHttp** (NovelAI & Google Integration)
 - **Lombok** / **Jackson**
 
 ### Frontend
